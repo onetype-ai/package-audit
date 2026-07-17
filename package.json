@@ -1,0 +1,19 @@
+{
+    "name": "@onetype/audit",
+    "version": "0.1.0",
+    "description": "Audit trail for the instance. Every command run lands in the log with who ran it, from where and how it went.",
+    "type": "module",
+    "license": "MIT",
+    "author": "Dejan Tomic <hi@iamdejan.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/onetype-ai/package-audit.git"
+    },
+    "imports": {
+        "#audit/*": "./back/*"
+    },
+    "peerDependencies": {
+        "@onetype/framework": ">=2.0.0",
+        "@onetype/platform": ">=0.1.0"
+    }
+}
