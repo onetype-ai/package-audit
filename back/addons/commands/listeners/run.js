@@ -11,5 +11,10 @@ onetype.EmitOn('@commands.run', (run) =>
 		return;
 	}
 
+	if(command && command.Get('endpoint') && command.Get('method') === 'GET')
+	{
+		return;
+	}
+
 	audit.commands.Fn('record', run).catch(() => null);
 });
