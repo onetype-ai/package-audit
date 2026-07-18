@@ -30,7 +30,8 @@ onetype.AddonReady('ui.dashboard.widgets', (widgets) =>
 			filters: [created()],
 			sort_field: 'id',
 			sort_direction: 'desc',
-			limit
+			limit,
+			joins: [{ addon: 'workspace.users', field: 'user_id', output: 'user', select: ['id', 'name', 'email'] }]
 		}, true);
 
 		return result.code === 200 ? result.data.items : [];
@@ -104,9 +105,10 @@ onetype.AddonReady('ui.dashboard.widgets', (widgets) =>
 		condition: { app: ['audit'] },
 		data: async () =>
 		{
-			const ok = await count([created(), { field: 'code', value: [200, 299], operator: 'BETWEEN' }]);
-			const rejected = await count([created(), { field: 'code', value: [400, 499], operator: 'BETWEEN' }]);
-			const errored = await count([created(), { field: 'code', value: [500, 599], operator: 'BETWEEN' }]);
+			const window = created();
+			const ok = await count([window, { field: 'code', value: [200, 299], operator: 'BETWEEN' }]);
+			const rejected = await count([window, { field: 'code', value: [400, 499], operator: 'BETWEEN' }]);
+			const errored = await count([window, { field: 'code', value: [500, 599], operator: 'BETWEEN' }]);
 
 			return {
 				label: 'runs',
@@ -133,8 +135,9 @@ onetype.AddonReady('ui.dashboard.widgets', (widgets) =>
 		data: async () =>
 		{
 			const total = await count([created()]);
-			const ok = await count([created(), { field: 'code', value: [200, 299], operator: 'BETWEEN' }]);
-			const rate = total ? Math.round((ok / total) * 100) : 100;
+			const failed = await count([created(), { field: 'code', value: [400, 599], operator: 'BETWEEN' }]);
+			const ok = Math.max(total - failed, 0);
+			const rate = total ? Math.min(Math.round((ok / total) * 100), 100) : 100;
 
 			return {
 				value: rate,
@@ -195,7 +198,7 @@ onetype.AddonReady('ui.dashboard.widgets', (widgets) =>
 					icon: entry.code >= 400 ? 'error' : 'check',
 					color: entry.code >= 500 ? 'red' : (entry.code >= 400 ? 'orange' : 'green'),
 					title: entry.command,
-					detail: entry.direct ? 'system' : (entry.user_id ? 'user #' + entry.user_id : 'anonymous'),
+					detail: entry.direct ? 'system' : (entry.user ? entry.user.name : 'anonymous'),
 					badge: String(entry.code),
 					time: new Date(entry.created_at).toLocaleTimeString()
 				}))
