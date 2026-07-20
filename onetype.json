@@ -9,6 +9,9 @@
 	"core": ">=0.1.0",
 	"status": "enabled",
 	"depends": [],
+	"runtimes": [
+		"admin"
+	],
 	"permissions": [],
 	"limits": {},
 	"features": {},
