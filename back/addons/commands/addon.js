@@ -1,5 +1,3 @@
-import onetype from '@onetype/framework';
-
 onetype.AddonReady('audit', (audit) =>
 {
 	audit.commands = onetype.Addon('audit.commands', (addon) =>

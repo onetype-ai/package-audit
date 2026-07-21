@@ -1,4 +1,3 @@
-import onetype from '@onetype/framework';
 import commands from '@onetype/framework/commands';
 import audit from '#audit/addon.js';
 
