@@ -4,17 +4,17 @@ const SENSITIVE = ['password', 'value', 'secret', 'token'];
 
 audit.commands.Fn('redact', function(input)
 {
-	if(!input || typeof input !== 'object')
-	{
-		return {};
-	}
+    if(!input || typeof input !== 'object')
+    {
+        return {};
+    }
 
-	const result = {};
+    const result = {};
 
-	for(const [key, value] of Object.entries(input))
-	{
-		result[key] = SENSITIVE.includes(key.toLowerCase()) && value != null ? this.Fn('mask', value) : value;
-	}
+    for(const [key, value] of Object.entries(input))
+    {
+        result[key] = SENSITIVE.includes(key.toLowerCase()) && value != null ? this.Fn('mask', value) : value;
+    }
 
-	return result;
+    return result;
 });

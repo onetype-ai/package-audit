@@ -1,11 +1,9 @@
 {
 	"slug": "onetype/audit",
 	"name": "Audit",
-	"version": "0.1.0",
 	"description": "Audit trail for the instance. Every command run lands in the log with who ran it, from where and how it went.",
 	"icon": "history",
 	"color": "rgba(96, 165, 250, 1)",
-	"core": ">=0.1.0",
 	"status": "disabled",
 	"depends": [
 		"onetype/elements",
@@ -16,6 +14,5 @@
 	],
 	"permissions": [],
 	"limits": {},
-	"features": {},
-	"config": {}
+	"features": {}
 }
