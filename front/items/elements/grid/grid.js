@@ -50,7 +50,7 @@ elements.ItemAdd({
                 sort_field: 'id',
                 sort_direction: 'desc',
                 limit: this.limit,
-                joins: [{ addon: 'workspace.users', field: 'user_id', output: 'user', select: ['id', 'name', 'email'] }]
+                joins: [{ addon: 'platform.users', field: 'user_id', output: 'user', select: ['id', 'name', 'email'] }]
             }, true);
 
             if(result.code !== 200)
@@ -72,7 +72,7 @@ elements.ItemAdd({
         this.refresh();
 
         return /* html */ `
-            <e-views-grid :fields="fields" :items="rows" :background="background" empty="No runs recorded yet."></e-views-grid>
+            <e-admin-views-grid :fields="fields" :items="rows" :background="background" empty="No runs recorded yet."></e-admin-views-grid>
         `;
     }
 });

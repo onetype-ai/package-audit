@@ -1,4 +1,4 @@
-onetype.AddonReady('ui.explorer', (explorer) =>
+onetype.AddonReady('admin.explorer', (explorer) =>
 {
     explorer.Item({
         id: 'audit',

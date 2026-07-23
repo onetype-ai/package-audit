@@ -1,7 +1,7 @@
-import commands from '@onetype/framework/commands';
+import commands from 'addon-commands';
 import audit from '#audit/addon.js';
 
-onetype.EmitOn('@commands.run', (run) =>
+onetype.emitters.catch('commands.run', (run) =>
 {
     const command = commands.ItemGet(run.id);
 

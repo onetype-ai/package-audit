@@ -1,4 +1,4 @@
-onetype.AddonReady('ui.modes', (modes) =>
+onetype.AddonReady('admin.modes', (modes) =>
 {
     modes.Item({
         id: 'logs',

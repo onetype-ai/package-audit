@@ -6,4 +6,4 @@ import '#audit/addons/commands/functions/redact.js';
 import '#audit/addons/commands/functions/record.js';
 
 /* Listeners */
-import '#audit/addons/commands/listeners/run.js';
+import '#audit/addons/commands/listeners/emitters/commands.run.js';

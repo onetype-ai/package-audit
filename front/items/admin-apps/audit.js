@@ -1,4 +1,4 @@
-onetype.AddonReady('ui.apps', (apps) =>
+onetype.AddonReady('admin.apps', (apps) =>
 {
     apps.Item({
         id: 'audit',

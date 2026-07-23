@@ -1,4 +1,4 @@
-onetype.AddonReady('ui.screens', (screens) =>
+onetype.AddonReady('admin.screens', (screens) =>
 {
     screens.Item({
         id: 'audit',
